@@ -1,0 +1,18 @@
+extends ./layout/app 
+
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+    
+
+
+block contenido 
+    div(class="py-5 px-10")
+ 
+        section(class="py-5")
+            h2(class="text-2xl font-extrabold text-center pt-5")= pagina
+            if propiedades.length
+                div(class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5")
+                    each departamento in propiedades
+                        include ./templates/card.pug
+            else
+                p(class="text-center text-sm font-bold text-gray-800") No hay propiedades para mostrar

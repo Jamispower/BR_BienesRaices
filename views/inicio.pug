@@ -1,0 +1,47 @@
+extends ./layout/app 
+
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+    
+
+
+block contenido 
+    div(class="py-5 px-10")
+        h1(class="text-4xl font-extrabold text-center shadow rounded-xl p-3") Ubicación en el mapa 
+
+        div(class="flex flex-col md:flex-row items-center py-10 gap-4")
+            h2(class="text-sm uppercase text-gray-800 font-bold") Filtar propiedades:
+
+            div(class="w-full md:w-auto flex items-center gap-2 lg:px-8")
+                label(for="categoria" class="text-gray-500 text-sm w-24 font-bold uppercase") Categoria:
+                select(id="categorias" class="flex-1  bg-white w-full border border-gray-300 rounded-md p-2 shadow")
+                    option(value="") --Seleccione--
+                    each categoria in categorias
+                        option(value=categoria.id)= categoria.nombre
+            
+            div(class="w-full md:w-auto flex  items-center gap-2 lg:px-8")
+                label(for="precios" class="text-gray-500 text-sm w-24 font-bold uppercase") Precios:
+                select(id="precios" class="flex-1  bg-white w-full border border-gray-300 rounded-md p-2 shadow")
+                    option(value="") --Seleccione--
+                    each precio in precios
+                        option(value=precio.id)= precio.precio
+
+        div(id="mapa-inicio" class="h-[600px]")
+
+        section(class="py-5")
+            h2(class="text-2xl font-extrabold text-center pt-5") Casas en Venta 
+            div(class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5")
+                each departamento in casas
+                    include ./templates/card.pug
+        section(class="py-5")
+            h2(class="text-2xl font-extrabold text-center pt-5") Departamentos en Venta 
+            div(class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5")
+                each departamento in departamentos
+                    include ./templates/card.pug
+
+            //pre= JSON.stringify(casas, null, 2)
+
+
+block scripts 
+    script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js")
+    script(src="/js/mapaInicio.js")

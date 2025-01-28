@@ -1,0 +1,24 @@
+header(class="bg-indigo-500 p-4")  
+    .container.mx-auto.flex.justify-between.items-center
+        a(href="/")
+            h1(class="text-2xl text-white font-extrabold text-center") Bienes    
+                span.font-normal Raices
+        
+        nav(class="my-5 tex-sm md:flex md:items-center font-bold md:gap-3 text-white hidden")
+            a(href="/auth/registro") Crear Cuenta
+            a(href="/auth/login") Iniciar Sesion
+
+div(class="bg-indigo-700 p-2 hidden lg:block")
+    div(class="container mx-auto flex justify-between items-center")
+        nav(class="flex gap-5")
+            a(href="/categorias/1" class="text-sm font-bold uppercase text-white" ) Casa
+            a(href="/categorias/2" class="text-sm font-bold uppercase text-white" ) Departamento
+            a(href="/categorias/3" class="text-sm font-bold uppercase text-white" ) Almacen
+            a(href="/categorias/4" class="text-sm font-bold uppercase text-white" ) Terreno
+            a(href="/categorias/5" class="text-sm font-bold uppercase text-white" ) Cabaña
+        
+        form(action="/buscador" method="POST" class="flex gap-3 items-center")
+            label(for="termino" class="text-sm text-white font-bold") Búsqueda
+            input(type="text" id="termino" name="termino" class="border border-gray-300 rounded-md p-2 shadow text-sm" placeholder="Buscar Propiedades")
+            input(type="submit" class="bg-indigo-800 text-white text-sm font-bold uppercase p-2 rounded-md cursor cursor-pointer" value="Buscar")
+            input(type="hidden"  name="_csrf" value= csrfToken) 
