@@ -11,9 +11,9 @@ const db = new Sequelize(process.env.BD_NOMBRE,process.env.BD_USUARIO,process.en
         timestamps: true
     },
     pool:{
-        max:5,
+        max:3,
         min:0,
-        acquire: 30000,
+        acquire: 15000,
         idle:10000
     },
     dialectModule: mysql2,
