@@ -15,6 +15,7 @@ const db = new Sequelize(process.env.BD_NOMBRE,process.env.BD_USUARIO,process.en
         acquire: 30000,
         idle:10000
     },
+    dialectModule: require('mysql2'),
     operatorAliases: false
 });
 
